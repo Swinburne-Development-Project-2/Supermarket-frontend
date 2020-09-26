@@ -2,13 +2,30 @@ import React, {Component} from 'react';
 import './App.css';
 import SearchButton from './components/SearchButton';
 import NavBar from './components/NavBar';
+import axios from "axios";
 
 class App extends Component {
+	state = {
+		repos: null
+	}
+	getFood = (e) => {
+			e.preventDefault();
+			const food = e.target.elements.foodName.value;
+			if (food){
+				axios.get(`https://api.github.com/users/${food}`)
+				.then((res) => {
+					const repos = res.data.public_repos;
+					this.setState({repos: repos});
+				})
+			}
+			else return;
+	}
 	render(){
 		return(
 		    <React.Fragment>
-		    	<NavBar/>
+		    	<NavBar getFood={this.getFood}/>
 		    	<SearchButton/>
+		    	{this.state.repos ? <p>Number of repos: {this.state.repos}</p> : <p>Please enter a name</p>}
 		    </React.Fragment>
 		);
 	}
