@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import './App.css';
-import SearchButton from './components/SearchButton';
 import NavBar from './components/NavBar';
+import Banner from "./components/banner";
 
 class App extends Component {
 	render(){
 		return(
 		    <React.Fragment>
 		    	<NavBar/>
-		    	<SearchButton/>
+		    	<Banner/>
 		    </React.Fragment>
 		);
 	}
