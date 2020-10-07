@@ -27,13 +27,13 @@ class App extends Component {
 		return(
 		    <React.Fragment>
 		    	<NavBar getFood={this.getFood}/>
-		    	<SearchButton/>
-		    	{this.state.repos ? <p>Number of repos: {this.state.repos}</p> : <p>Please enter a name</p>}
+		    	{/*<SearchButton/>
+		    	{this.state.repos ? <p>Number of repos: {this.state.repos}</p> : <p>Please enter a name</p>}*/}
 		    	<Banner />
 		        <Pricetable />
 		        <Pricetable2 />
 		    </React.Fragment>
 		);
 	}
-
+}
 export default App;
