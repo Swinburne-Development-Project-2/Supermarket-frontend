@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import './App.css';
 import SearchButton from './components/SearchButton';
 import NavBar from './components/NavBar';
+import Banner from "./components/banner";
+import Pricetable from "./components/Pricetable";
+import Pricetable2 from "./components/Pricetable2";
 import axios from "axios";
 
 class App extends Component {
@@ -26,9 +29,11 @@ class App extends Component {
 		    	<NavBar getFood={this.getFood}/>
 		    	<SearchButton/>
 		    	{this.state.repos ? <p>Number of repos: {this.state.repos}</p> : <p>Please enter a name</p>}
+		    	<Banner />
+		        <Pricetable />
+		        <Pricetable2 />
 		    </React.Fragment>
 		);
 	}
-}
 
 export default App;
