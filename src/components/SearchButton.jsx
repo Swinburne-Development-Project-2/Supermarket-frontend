@@ -4,7 +4,7 @@ class SearchButton extends Component {
   render() {
     return (
       <div>
-        <button type="submit" className="Searchbut Searchbut1">
+        <button type="submit" className="Searchbut">
           Search
         </button>
       </div>

@@ -10,32 +10,26 @@
   position: relative;
 }
 .Searchbut {
-  background-color: #4caf50; /* Green */
-  border: none;
-  color: white;
+  background-color: white;
+  color: black;
   padding: 5px 15px;
   text-align: center;
   text-decoration: none;
-  margin-left: 41.5%;
-  margin-top: 16.8%;
+  margin-left: 39.5%;
+  margin-top: 22.5%;
   position: relative;
   font-size: 16px;
   border-radius: 5px;
   float: left;
-}
-.Searchbut1 {
-  background-color: white;
-  color: black;
   border: 2px solid #4caf50;
 }
-.Searchbut1:hover {
+.Searchbut:hover {
   background-color: #4caf50;
-  color: white;
 }
 
 .inputbar {
   border-radius: 5px;
-  left: 41%;
+  left: 39%;
   top: 81%;
   float: left;
   padding: 5px 15px;
