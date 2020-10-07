@@ -1,0 +1,39 @@
+.table-wrapper {
+  position: relative;
+  text-align: center;
+}
+.table-scroll {
+  height: 270px;
+  overflow: auto;
+  margin-top: 20px;
+}
+.table-wrapper table {
+  width: 100%;
+}
+.table-wrapper table * {
+  background: #a7b7bf;
+  color: black;
+}
+.table-wrapper table thead th .text {
+  position: absolute;
+  top: -20px;
+  z-index: 2;
+  height: 20px;
+  width: 35%;
+  border: 1px solid red;
+}
+.centered {
+  position: relative;
+  top: 59%;
+  left: 5%;
+  text-align: center;
+  width: 40%;
+  height: 50%;
+  margin-top: 3%;
+
+  float: left;
+}
+.woolworthlogo {
+  width: 20%;
+  height: 20%;
+}
