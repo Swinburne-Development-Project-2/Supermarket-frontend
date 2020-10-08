@@ -1,11 +1,4 @@
-.woolworthlogoClass {
-  margin: 5%;
-  text-align: center;
-  width: 40%;
-  float: left;
-}
-
-.aldilogoClass {
+.supermarket {
   margin: 5%;
   margin-top: 4%;
   text-align: center;
@@ -13,12 +6,12 @@
   float: left;
 }
 
-.woolworthlogo {
+.wooliesLogo {
   width: 20%;
   height: 20%;
 }
 
-.aldilogo {
+.aldiLogo {
   width: 15%;
   height: 15%;
 }
