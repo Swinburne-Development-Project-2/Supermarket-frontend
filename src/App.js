@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
-import NavBar from "./components/NavBar";
-import Banner from "./components/banner";
-import Pricetable from "./components/Pricetable";
-import Pricetable2 from "./components/Pricetable2";
+import NavBar from "./components/navbar/NavBar";
+import Banner from "./components/banner/banner";
+import Pricetable from "./components/pricetable/Pricetable";
+import Pricetable2 from "./components/pricetable/Pricetable2";
 class App extends Component {
   render() {
     return (

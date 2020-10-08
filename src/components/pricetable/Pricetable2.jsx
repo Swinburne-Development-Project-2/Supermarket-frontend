@@ -1,22 +1,22 @@
 import React, { Component } from "react";
-import "./Pricetable.css";
-import Img from "./woolworthlogo.png";
-class Pricetable extends Component {
+import Img2 from "./img/aldilogo.png";
+import "./Pricetable2.css";
+class Pricetable2 extends Component {
   render() {
     return (
-      <div className="centered">
-        <img src={Img} alt="pic" className="woolworthlogo" />
-        <div className="table-wrapper">
-          <div className="table-scroll">
-            <table className="paginated" border="1">
-              <thead className="thead">
+      <div className="centered2">
+        <img src={Img2} alt="pic" className="woolworthlogo" />
+        <div className="table-wrapper2">
+          <div className="table-scroll2">
+            <table className="paginated2" border="1">
+              <thead className="thead2">
                 <tr>
                   <th scope="col">Image</th>
                   <th scope="col">Name</th>
                   <th scope="col">Price</th>
                 </tr>
               </thead>
-              <tbody className="tbody">
+              <tbody className="tbody2">
                 <tr>
                   <td>1</td>
                   <td>2</td>
@@ -81,4 +81,4 @@ class Pricetable extends Component {
   }
 }
 
-export default Pricetable;
+export default Pricetable2;

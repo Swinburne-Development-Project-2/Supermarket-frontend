@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import "./Banner.css";
-import InputBar from "./inputbar";
-import SearchButton from "./SearchButton";
+import SearchBox from "../SearchBar/SearchBox";
+import SearchButton from "../SearchBar/SearchButton";
 
 class Banner extends Component {
   render() {
     return (
       <div className="hero-image">
-        <InputBar />
+        <SearchBox />
         <SearchButton />
       </div>
     );

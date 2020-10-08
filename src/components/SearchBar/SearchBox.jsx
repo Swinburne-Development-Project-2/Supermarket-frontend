@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-class InputBar extends Component {
+class SearchBox extends Component {
   render() {
     return (
       <input type="text" id="fname" name="fname" className="inputbar"></input>
@@ -7,4 +7,4 @@ class InputBar extends Component {
   }
 }
 
-export default InputBar;
+export default SearchBox;
