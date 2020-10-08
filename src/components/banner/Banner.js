@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import "./Banner.css";
-import SearchBox from "../SearchBar/SearchBox";
-import SearchButton from "../SearchBar/SearchButton";
+import SearchBox from "../search/SearchBox";
+import SearchButton from "../search/SearchButton";
+import styles from './Banner.module.css';
 
 class Banner extends Component {
   render() {
     return (
     	<div>
-    		<div className="hero-image">
+    		<div className={styles.banner}>
       		</div>
         	<SearchBox />
         	<SearchButton />

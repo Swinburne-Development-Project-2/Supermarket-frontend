@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import './App.css';
-import SearchButton from './components/SearchBar/SearchButton';
 import NavBar from './components/navbar/NavBar';
-import Banner from "./components/banner/banner";
+import Banner from "./components/banner/Banner";
 import Pricetable from "./components/pricetable/Pricetable";
 import axios from "axios";
 
@@ -26,12 +24,9 @@ class App extends Component {
 		return(
 		    <React.Fragment>
 		    	<NavBar getFood={this.getFood}/>
-		    	{/* This part is for http get request
-		    	<SearchButton/>
-		    	{this.state.repos ? <p>Number of repos: {this.state.repos}</p> : <p>Please enter a name</p>}*/}
 		    	<Banner />
-		        <Pricetable logo='woolworthlogo' />
-		        <Pricetable logo='aldilogo' />
+		        <Pricetable supermarket='woolies' />
+		        <Pricetable supermarket='aldi' />
 		    </React.Fragment>
 		);
 	}

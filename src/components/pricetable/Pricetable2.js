@@ -1,54 +1,23 @@
 import React, { Component } from "react";
-import "./Pricetable.css";
-import Table from "react-bootstrap/Table"
+import Img2 from "./img/aldilogo.png";
+import "./Pricetable2.module.css";
 
-class Pricetable extends Component {
+class Pricetable2 extends Component {
   render() {
-    const logoURL = this.props.logo + ".png";
-    const classType = this.props.logo + "Class";
     return (
-      <div className={classType}>
-        <img src={require(`./img/${logoURL}`)} alt="woolworth_logo" className={this.props.logo} />
-        <Table bordered hover>
-          <thead>
-            <tr>
-              <th>Product Image</th>
-              <th>Product Name</th>
-              <th>Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-            </tr>
-          </tbody>
-        </Table>
-      </div>
-      /*<div className="centered">
-        <img src={Img} alt="pic" className="woolworthlogo" />
-        <div className="table-wrapper">
-          <div className="table-scroll">
-            <table className="paginated" border="1">
-              <thead className="thead">
+      <div className="centered2">
+        <img src={Img2} alt="pic" className="woolworthlogo" />
+        <div className="table-wrapper2">
+          <div className="table-scroll2">
+            <table className="paginated2" border="1">
+              <thead className="thead2">
                 <tr>
                   <th scope="col">Image</th>
                   <th scope="col">Name</th>
                   <th scope="col">Price</th>
                 </tr>
               </thead>
-              <tbody className="tbody">
+              <tbody className="tbody2">
                 <tr>
                   <td>1</td>
                   <td>2</td>
@@ -108,10 +77,9 @@ class Pricetable extends Component {
             </table>
           </div>
         </div>
-      </div>*/
-
+      </div>
     );
   }
 }
 
-export default Pricetable;
+export default Pricetable2;
