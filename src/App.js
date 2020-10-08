@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import LogInPage from './components/login/LogInPage';
+import SignUpPage from './components/signup/SignUpPage';
 import PriceCompare from './components/pricecompare/PriceCompare';
 import { 
 	BrowserRouter as Router,
@@ -17,7 +18,7 @@ class App extends Component {
 							<PriceCompare />
 						</Route>
 						<Route path="/signup">
-							<PriceCompare />
+							<SignUpPage />
 						</Route>
 						<Route path="/">
 							<LogInPage />
