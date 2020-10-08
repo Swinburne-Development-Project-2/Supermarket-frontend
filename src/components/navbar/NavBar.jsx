@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 class NavBar extends Component{
 	render(){
 		return(
-			<div>
+			<React.Fragment>
 				<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
 					<a className="navbar-brand" href="#">BestPrice</a>
 				  	<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,7 +30,7 @@ class NavBar extends Component{
 				    </ul>
 				  </div> */}
 				</nav>
-			</div>
+			</React.Fragment>
 		);
 	}
 }

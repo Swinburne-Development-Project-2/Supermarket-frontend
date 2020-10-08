@@ -6,10 +6,12 @@ import SearchButton from "../SearchBar/SearchButton";
 class Banner extends Component {
   render() {
     return (
-      <div className="hero-image">
-        <SearchBox />
-        <SearchButton />
-      </div>
+    	<div>
+    		<div className="hero-image">
+      		</div>
+        	<SearchBox />
+        	<SearchButton />
+      	</div>
     );
   }
 }
