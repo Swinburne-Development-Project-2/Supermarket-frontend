@@ -34,6 +34,8 @@ const Pricetable = ({supermarket, data}) => {
                 <img 
                   src={item.imgUrl}
                   alt={item.productName}
+                  width="80px"
+                  height="80px"
                 />
               </a>
             </td>
@@ -48,10 +50,12 @@ const Pricetable = ({supermarket, data}) => {
     return (
       <div className={styles.supermarket}>
         {tableLogo}
-        <Table bordered hover>
-          {tableColumns}
-          {tableRows}
-        </Table>
+        <div className={styles.scroll}>
+          <Table bordered hover>
+            {tableColumns}
+            {tableRows}
+          </Table>
+        </div>
       </div>
     );
 };

@@ -20,7 +20,7 @@ class App extends Component {
 		const { priceData } = this.state;
 		return(
 		    <React.Fragment>
-		    	<NavBar getFood={this.getFood}/>
+		    	<NavBar />
 		    	<Banner />
 				<SearchBar handlePriceData={this.setPriceData} />
 		        <Pricetable supermarket='woolies' data={priceData.woolies} />

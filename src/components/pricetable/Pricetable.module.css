@@ -15,3 +15,8 @@
   width: 15%;
   height: 15%;
 }
+
+.scroll {
+	height: 400px;
+  overflow-y: auto;
+}
