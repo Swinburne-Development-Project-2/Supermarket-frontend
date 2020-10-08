@@ -6,7 +6,10 @@ import SearchBar from './components/search/SearchBar';
 
 class App extends Component {
 	state = {
-		priceData: null,
+		priceData: {
+			woolies: [],
+			aldi: [],
+		},
 	}
 
 	setPriceData = (data) => {
@@ -14,13 +17,14 @@ class App extends Component {
 	}
 
 	render(){
+		const { priceData } = this.state;
 		return(
 		    <React.Fragment>
 		    	<NavBar getFood={this.getFood}/>
 		    	<Banner />
 				<SearchBar handlePriceData={this.setPriceData} />
-		        <Pricetable supermarket='woolies' />
-		        <Pricetable supermarket='aldi' />
+		        <Pricetable supermarket='woolies' data={priceData.woolies} />
+		        <Pricetable supermarket='aldi' data={priceData.aldi} />
 		    </React.Fragment>
 		);
 	}

@@ -1,12 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import styles from './Banner.module.css';
 
-class Banner extends Component {
-  render() {
-    return (
-		<div className={styles.banner} />
-    );
-  }
-}
+const Banner = () => (
+	<div className={styles.banner} />
+);
 
 export default Banner;

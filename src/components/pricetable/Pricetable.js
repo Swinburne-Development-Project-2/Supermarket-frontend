@@ -1,47 +1,59 @@
-import React, { Component } from "react";
+import React from "react";
 import styles from "./Pricetable.module.css";
 import Table from "react-bootstrap/Table"
 
-class Pricetable extends Component {
-  render() {
-    const logoURL = this.props.supermarket + ".png";
+const Pricetable = ({supermarket, data}) => {
+    const logoURL = supermarket + ".png";
+
+    const tableLogo = (
+      <img 
+        src={require(`./img/${logoURL}`)} 
+        alt={supermarket} 
+        className={supermarket === 'woolies' 
+          ? styles.wooliesLogo 
+          : styles.aldiLogo} />
+    );
+
+    const tableColumns = (
+      <thead>
+        <tr>
+          <th>Product Image</th>
+          <th>Product Name</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+    );
+
+    const tableRows = (
+      <tbody>
+        {data.map(item => {
+          return (
+            <tr>
+            <td>
+              <a href={item.productUrl} target="_blank">
+                <img 
+                  src={item.imgUrl}
+                  alt={item.productName}
+                />
+              </a>
+            </td>
+            <td>{item.productName}</td>
+            <td>{item.price}</td>
+          </tr>
+          );
+        })}
+      </tbody>
+    );
+
     return (
       <div className={styles.supermarket}>
-        <img 
-          src={require(`./img/${logoURL}`)} 
-          alt={this.props.logo} 
-          className={this.props.supermarket === 'woolies' 
-            ? styles.wooliesLogo 
-            : styles.aldiLogo} />
+        {tableLogo}
         <Table bordered hover>
-          <thead>
-            <tr>
-              <th>Product Image</th>
-              <th>Product Name</th>
-              <th>Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-            </tr>
-          </tbody>
+          {tableColumns}
+          {tableRows}
         </Table>
       </div>
     );
-  }
-}
+};
 
 export default Pricetable;
