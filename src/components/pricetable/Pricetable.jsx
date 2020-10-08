@@ -8,7 +8,7 @@ class Pricetable extends Component {
     const classType = this.props.logo + "Class";
     return (
       <div className={classType}>
-        <img src={require(`./${logoURL}`)} alt="woolworth_logo" className={this.props.logo} />
+        <img src={require(`./img/${logoURL}`)} alt="woolworth_logo" className={this.props.logo} />
         <Table bordered hover>
           <thead>
             <tr>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Banner.css";
-import InputBar from "./inputbar";
-import SearchButton from "./SearchButton";
+import SearchBox from "../SearchBar/SearchBox";
+import SearchButton from "../SearchBar/SearchButton";
 
 class Banner extends Component {
   render() {
@@ -9,7 +9,7 @@ class Banner extends Component {
     	<div>
     		<div className="hero-image">
       		</div>
-        	<InputBar />
+        	<SearchBox />
         	<SearchButton />
       	</div>
     );

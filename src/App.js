@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import './App.css';
-import SearchButton from './components/SearchButton';
-import NavBar from './components/NavBar';
-import Banner from "./components/banner";
-import Pricetable from "./components/Pricetable";
+import SearchButton from './components/SearchBar/SearchButton';
+import NavBar from './components/navbar/NavBar';
+import Banner from "./components/banner/banner";
+import Pricetable from "./components/pricetable/Pricetable";
 import axios from "axios";
 
 class App extends Component {
