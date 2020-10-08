@@ -1,16 +1,16 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import LogInForm from './loginform/LogInForm';
+import SignUpForm from './signupform/SignUpForm';
 
-const LogInPage = () => {
+const SignUpPage = () => {
     const history = useHistory();
 
     return (
-        <LogInForm 
+        <SignUpForm 
             redirectToHome={() => history.push('/home')}
-            redirectToSignUpPage={() => history.push('/signup')}    
+            redirectToLogInPage={() => history.push('/')}
         />
     );
 }
 
-export default LogInPage;
+export default SignUpPage;

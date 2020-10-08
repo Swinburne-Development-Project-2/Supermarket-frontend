@@ -1,4 +1,4 @@
-.logInForm {
+.signUpForm {
     width: 500px;
     margin: 12.5% auto;
     background: #ffffff;
@@ -8,11 +8,11 @@
     transition: all .3s;
 }
 
-.logInHeader {
+.signUpHeader {
     text-align: center;
 }
 
-.dontHaveAccount {
+.alreadyRegistered {
     text-align: right;
     font-size: 14px;
     padding-top: 10px;
@@ -20,7 +20,7 @@
     margin: 0;
 }
 
-.signUpLink {
+.logInLink {
     color: #167bff;
     padding-left: 5px;
 }

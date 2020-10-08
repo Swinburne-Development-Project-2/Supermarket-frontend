@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styles from './LogInForm.module.css';
-import SignUpButton from '../signupbutton/SignUpButton';
 
 class LogInForm extends Component {
     state = {
@@ -28,7 +27,7 @@ class LogInForm extends Component {
     render() {
         return (
             <form className={styles.logInForm} onSubmit={this.handleSubmit}>
-                <h3>Sign In</h3>
+                <h3 className={styles.logInHeader}>Log In</h3>
 
                 <div className="form-group">
                     <label>Email</label>
@@ -59,8 +58,17 @@ class LogInForm extends Component {
                     </div>
                 </div>
 
-                <button type="submit" className="btn btn-primary btn-block">Submit</button>
-                <SignUpButton />
+                <button type="submit" className="btn btn-primary btn-block">Log in</button>
+                <p className={styles.dontHaveAccount}>
+                    Don't have an account? 
+                    <a 
+                        href="#" 
+                        className={styles.signUpLink} 
+                        onClick={this.props.redirectToSignUpPage}
+                    >
+                        Sign Up
+                    </a>
+                </p>
             </form>
         )
     }
