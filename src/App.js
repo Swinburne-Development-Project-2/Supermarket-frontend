@@ -2,29 +2,21 @@ import React, {Component} from 'react';
 import NavBar from './components/navbar/NavBar';
 import Banner from "./components/banner/Banner";
 import Pricetable from "./components/pricetable/Pricetable";
-import axios from "axios";
+import SearchBar from "./components/search/SearchBar";
 
 class App extends Component {
 	state = {
-		repos: null
+		priceData: null
 	}
-	getFood = (e) => {
-			e.preventDefault();
-			const food = e.target.elements.foodName.value;
-			if (food){
-				axios.get(`https://api.github.com/users/${food}`)
-				.then((res) => {
-					const repos = res.data.public_repos;
-					this.setState({repos: repos});
-				})
-			}
-			else return;
+	setPriceData = (data) => {
+		this.setState({priceData: data});
 	}
 	render(){
 		return(
 		    <React.Fragment>
-		    	<NavBar getFood={this.getFood}/>
+		    	<NavBar />
 		    	<Banner />
+		    	<SearchBar handlePriceData={this.setPriceData} />
 		        <Pricetable supermarket='woolies' />
 		        <Pricetable supermarket='aldi' />
 		    </React.Fragment>
