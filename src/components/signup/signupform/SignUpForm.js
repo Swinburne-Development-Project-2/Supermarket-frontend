@@ -1,3 +1,4 @@
+import Axios from 'axios';
 import React, { Component } from 'react';
 import styles from './SignUpForm.module.css';
 
@@ -7,19 +8,41 @@ class LogInForm extends Component {
         lastName: '',
         email: '',
         password: '',
+        hasError: false,
+        errorMessage: '',
     }
 
-    handleFieldsChange = (event) => {
-        const key = event.target.key;
-        const value = event.target.value;
-        this.setState({ [key]: value });
+    handleFirstNameChange = (event) => {
+        const firstName = event.target.value;
+        this.setState({ firstName, hasError: false });
+    }
+
+    handleLastNameChange = (event) => {
+        const lastName = event.target.value;
+        this.setState({ lastName, hasError: false });
+    }
+
+    handleEmailChange = (event) => {
+        const email = event.target.value;
+        this.setState({ email, hasError: false });
+    }
+
+    handlePasswordChange = (event) => {
+        const password = event.target.value;
+        this.setState({ password, hasError: false });
     }
 
     handleSubmit = () => {
         const { firstName, lastName, email, password } = this.state;
-        this.props.redirectToHome();
         
-        //TODO: Axios submit names and email and password
+        Axios.post('/home/register', {
+            firstName,
+            lastName,
+            email,
+            password
+        })
+        .then((response) => this.props.redirectToHome())
+        .catch((error) => this.setState({ hasError: true, errorMessage: 'Something went wrong. Please try again later.' }));
     }
 
     render() {
@@ -35,7 +58,7 @@ class LogInForm extends Component {
                         placeholder="First name" 
                         key="firstName"
                         value={this.state.firstName}
-                        onChange={this.handleFieldsChange}
+                        onChange={this.handleFirstNameChange}
                     />
                 </div>
 
@@ -47,7 +70,7 @@ class LogInForm extends Component {
                         placeholder="Last name" 
                         key="lastName"
                         value={this.state.lastName}
-                        onChange={this.handleFieldsChange}
+                        onChange={this.handleLastNameChange}
                     />
                 </div>
 
@@ -58,7 +81,8 @@ class LogInForm extends Component {
                         className="form-control" 
                         placeholder="Enter email" 
                         value={this.state.email}
-                        onChange={this.handleFieldsChange}
+                        onChange={this.handleEmailChange}
+                        required
                     />
                 </div>
 
@@ -69,9 +93,16 @@ class LogInForm extends Component {
                         className="form-control" 
                         placeholder="Enter password" 
                         value={this.state.password}
-                        onChange={this.handleFieldsChange}    
+                        onChange={this.handlePasswordChange}    
+                        required
                     />
                 </div>
+
+                {this.state.hasError && 
+                    <div className="form-group">
+                        <span className={styles.errorMessage}>{this.state.errorMessage}</span>
+                    </div>
+                }
 
                 <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
                 <p className={styles.alreadyRegistered}>

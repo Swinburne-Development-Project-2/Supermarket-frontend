@@ -24,3 +24,7 @@
     color: #167bff;
     padding-left: 5px;
 }
+
+.errorMessage {
+    color: red;
+}
