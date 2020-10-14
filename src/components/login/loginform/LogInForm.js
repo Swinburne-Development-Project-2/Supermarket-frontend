@@ -1,3 +1,4 @@
+import Axios from 'axios';
 import React, { Component } from 'react';
 import styles from './LogInForm.module.css';
 
@@ -5,23 +6,29 @@ class LogInForm extends Component {
     state = {
         email: '',
         password: '',
+        hasError: false,
+        errorMessage: '',
     }
 
     handleEmailChange = (event) => {
         const email = event.target.value;
-        this.setState({ email });
+        this.setState({ email, hasError: false });
     }
 
     handlePasswordChange = (event) => {
         const password = event.target.value;
-        this.setState({ password });
+        this.setState({ password, hasError: false });
     }
 
     handleSubmit = () => {
         const { email, password } = this.state;
-        this.props.redirectToHome();
-        
-        //TODO: Axios submit email and password
+
+        Axios.post('/home/login', {
+            email,
+            password
+        })
+        .then((response) => this.props.redirectToHome())
+        .catch((error) => this.setState({ hasError: true, errorMessage: 'Something went wrong. Please try again later.' }));
     }
 
     render() {
@@ -50,6 +57,12 @@ class LogInForm extends Component {
                         onChange={this.handlePasswordChange}
                     />
                 </div>
+
+                {this.state.hasError && 
+                    <div className="form-group">
+                        <span className={styles.errorMessage}>{this.state.errorMessage}</span>
+                    </div>
+                }
 
                 <div className="form-group">
                     <div className="custom-control custom-checkbox">
