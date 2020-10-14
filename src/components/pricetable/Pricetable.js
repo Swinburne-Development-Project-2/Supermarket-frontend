@@ -26,20 +26,20 @@ const Pricetable = ({supermarket, data}) => {
 
     const tableRows = (
       <tbody>
-        {data.map(item => {
+        {data.map((item, index) => {
           return (
-            <tr>
+            <tr key={index}>
             <td>
-              <a href={item.productUrl} target="_blank">
+              <a href={item.product_url} target="_blank">
                 <img 
-                  src={item.imgUrl}
-                  alt={item.productName}
+                  src={item.img_url}
+                  alt={item.product_name}
                   width="80px"
                   height="80px"
                 />
               </a>
             </td>
-            <td>{item.productName}</td>
+            <td>{item.product_name}</td>
             <td>{item.price}</td>
           </tr>
           );

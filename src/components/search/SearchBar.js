@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styles from './SearchBar.module.css';
 import axios from "axios";
-import fakeData from '../../contract/frontend-backend-contract.json';
 
 class SearchBar extends Component {
     state = {
@@ -18,14 +17,8 @@ class SearchBar extends Component {
 
     handleSearch = event => {
         event.preventDefault();
-        console.log("test keyword search ", this.state.keyword);
-
-        // Temporarily commented out, using fake data for now
-        
-        // axios.get(`http://localhost:3001/home/search/${this.state.keyword}`)
-        //     .then(response => this.props.handlePriceData(response));
-
-        this.props.handlePriceData(fakeData);
+        axios.get(`http://localhost:3001/home/search/${this.state.keyword}`)
+             .then(response => this.props.handlePriceData(response.data));
     }
 
     render() {
