@@ -24,12 +24,10 @@ class SearchBar extends Component {
                 this.props.handlePriceData(response.data);
                 let endTime = Date.now();
                 let timeDiff = endTime - startTime;
-                if (timeDiff > 1000) {
-                    const message = `End to end - Time taken from searching to getting results on the UI: ${timeDiff}ms`;
-                    axios.post(`http://localhost:3001/home/discord`, {
-                        message
-                    });
-                }
+                const message = `End to end - Time taken from searching to getting results on the UI: ${timeDiff}ms`;
+                axios.post(`http://localhost:3001/home/discord`, {
+                    message
+                });
             });
     }
 
