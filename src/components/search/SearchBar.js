@@ -24,7 +24,8 @@ class SearchBar extends Component {
                 this.props.handlePriceData(response.data);
                 let endTime = Date.now();
                 let timeDiff = endTime - startTime;
-                const message = `End to end - Time taken from searching to getting results on the UI: ${timeDiff}ms`;
+                const message = 
+                    `End to end - Time taken from searching to getting results on the UI for keyword "${this.state.keyword}": ${timeDiff}ms`;
                 axios.post(`http://localhost:3001/home/discord`, {
                     message
                 });
