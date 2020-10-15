@@ -2,7 +2,7 @@ import Axios from 'axios';
 import React, { Component } from 'react';
 import styles from './SignUpForm.module.css';
 
-class LogInForm extends Component {
+class SignUpForm extends Component {
     state = {
         firstName: '',
         lastName: '',
@@ -41,7 +41,7 @@ class LogInForm extends Component {
             email,
             password
         })
-        .then((response) => this.props.redirectToHome())
+        .then((response) => this.props.redirectToHome(firstName, lastName))
         .catch((error) => this.setState({ hasError: true, errorMessage: 'Something went wrong. Please try again later.' }));
     }
 
@@ -120,4 +120,4 @@ class LogInForm extends Component {
     }
 }
 
-export default LogInForm;
+export default SignUpForm;

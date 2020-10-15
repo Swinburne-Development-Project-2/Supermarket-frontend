@@ -18,9 +18,10 @@ class PriceCompare extends Component {
 
 	render() {
 		const { priceData } = this.state;
+		const { firstName, lastName } = this.props;
 		return(
 		    <div>
-		    	<NavBar />
+		    	<NavBar firstName={firstName} lastName={lastName} onLogOut={this.props.onLogOut}/>
 		    	<Banner />
 				<SearchBar handlePriceData={this.setPriceData} />
 		        <Pricetable supermarket='woolies' data={priceData.woolies} />
