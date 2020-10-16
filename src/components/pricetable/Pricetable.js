@@ -30,14 +30,16 @@ const Pricetable = ({supermarket, data}) => {
           return (
             <tr key={index}>
             <td>
-              <a href={item.product_url} target="_blank">
-                <img 
-                  src={item.img_url}
-                  alt={item.product_name}
-                  width="80px"
-                  height="80px"
-                />
-              </a>
+              {item.img_url
+              ? <a href={item.product_url} target="_blank">
+                  <img 
+                    src={item.img_url}
+                    alt={item.product_name}
+                    width="80px"
+                    height="80px"
+                  />
+                </a>
+              : <span>No image available</span>}
             </td>
             <td>{item.product_name}</td>
             <td>{item.price}</td>
