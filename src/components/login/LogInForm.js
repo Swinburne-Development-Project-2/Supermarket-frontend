@@ -33,7 +33,7 @@ class LogInForm extends Component {
 
     render() {
         return (
-            <form className={styles.logInForm} onSubmit={this.handleSubmit}>
+            <form autoComplete="off" className={styles.logInForm} onSubmit={this.handleSubmit}>
                 <h3 className={styles.logInHeader}>Log In</h3>
 
                 <div className="form-group">

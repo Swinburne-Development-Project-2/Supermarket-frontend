@@ -47,7 +47,7 @@ class SignUpForm extends Component {
 
     render() {
         return (
-            <form className={styles.signUpForm} onSubmit={this.handleSubmit}>
+            <form autoComplete="off" className={styles.signUpForm} onSubmit={this.handleSubmit}>
                 <h3 className={styles.signUpHeader}>Sign Up</h3>
 
                 <div className="form-group">
