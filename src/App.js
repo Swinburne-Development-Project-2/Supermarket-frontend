@@ -15,7 +15,6 @@ class App extends Component {
 	componentDidMount() {
 		const firstName = localStorage.getItem('firstName');
 		const lastName = localStorage.getItem('lastName');
-		console.log('test ', lastName);
 		if (firstName && lastName) {
 			this.setState({ 
 				firstName, 
@@ -46,6 +45,8 @@ class App extends Component {
 	}
 
 	redirectToSignUpPage = () => {
+		localStorage.removeItem('firstName');
+		localStorage.removeItem('lastName');
 		this.setState({ 
 			userLoggedIn: false, 
 			isOnLogInPage: false, 

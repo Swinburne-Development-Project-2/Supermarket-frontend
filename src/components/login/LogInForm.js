@@ -23,7 +23,7 @@ class LogInForm extends Component {
     handleSubmit = () => {
         const { email, password } = this.state;
 
-        Axios.post('/home/login', {
+        Axios.post('http://localhost:3001/home/login', {
             email,
             password
         })

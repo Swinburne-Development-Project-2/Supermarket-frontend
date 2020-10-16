@@ -35,7 +35,7 @@ class SignUpForm extends Component {
     handleSubmit = () => {
         const { firstName, lastName, email, password } = this.state;
         
-        Axios.post('/home/register', {
+        Axios.post('http://localhost:3001/home/register', {
             firstName,
             lastName,
             email,

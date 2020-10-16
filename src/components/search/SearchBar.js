@@ -26,7 +26,7 @@ class SearchBar extends Component {
                 let timeDiff = endTime - startTime;
                 const message = 
                     `End to end - Time taken from searching to getting results on the UI for keyword "${this.state.keyword}": ${timeDiff}ms`;
-                axios.post(`http://localhost:3001/home/discord`, {
+                return axios.post(`http://localhost:3001/home/discord`, {
                     message
                 });
             });
