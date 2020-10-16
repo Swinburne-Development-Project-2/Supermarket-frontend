@@ -27,7 +27,7 @@ class LogInForm extends Component {
             email,
             password
         })
-        .then((response) => this.props.redirectToHome(response.firstName, response.lastName))
+        .then((response) => this.props.redirectToHome(response.data.firstName, response.data.lastName))
         .catch((error) => this.setState({ hasError: true, errorMessage: 'Something went wrong. Please try again later.' }));
     }
 
