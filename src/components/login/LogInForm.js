@@ -20,14 +20,15 @@ class LogInForm extends Component {
         this.setState({ password, hasError: false });
     }
 
-    handleSubmit = () => {
+    handleSubmit = (e) => {
+        e.preventDefault();
         const { email, password } = this.state;
 
-        Axios.post('http://localhost:3001/home/login', {
+        Axios.post('http://localhost:8080/users/auth', {
             email,
-            password
+            password,
         })
-        .then((response) => this.props.redirectToHome(response.data.firstName, response.data.lastName))
+        .then((response) => this.props.redirectToHome(email))
         .catch((error) => this.setState({ hasError: true, errorMessage: 'Something went wrong. Please try again later.' }));
     }
 

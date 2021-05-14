@@ -4,22 +4,10 @@ import styles from './SignUpForm.module.css';
 
 class SignUpForm extends Component {
     state = {
-        firstName: '',
-        lastName: '',
         email: '',
         password: '',
         hasError: false,
         errorMessage: '',
-    }
-
-    handleFirstNameChange = (event) => {
-        const firstName = event.target.value;
-        this.setState({ firstName, hasError: false });
-    }
-
-    handleLastNameChange = (event) => {
-        const lastName = event.target.value;
-        this.setState({ lastName, hasError: false });
     }
 
     handleEmailChange = (event) => {
@@ -32,16 +20,14 @@ class SignUpForm extends Component {
         this.setState({ password, hasError: false });
     }
 
-    handleSubmit = () => {
-        const { firstName, lastName, email, password } = this.state;
-        
-        Axios.post('http://localhost:3001/home/register', {
-            firstName,
-            lastName,
+    handleSubmit = (e) => {
+        e.preventDefault();
+        const { email, password } = this.state;
+        Axios.post('http://localhost:8080/users', {
             email,
             password
         })
-        .then((response) => this.props.redirectToHome(firstName, lastName))
+        .then((response) => this.props.redirectToHome(email))
         .catch((error) => this.setState({ hasError: true, errorMessage: 'Something went wrong. Please try again later.' }));
     }
 
@@ -49,30 +35,6 @@ class SignUpForm extends Component {
         return (
             <form autoComplete="off" className={styles.signUpForm} onSubmit={this.handleSubmit}>
                 <h3 className={styles.signUpHeader}>Sign Up</h3>
-
-                <div className="form-group">
-                    <label>First name</label>
-                    <input 
-                        type="text" 
-                        className="form-control" 
-                        placeholder="First name" 
-                        key="firstName"
-                        value={this.state.firstName}
-                        onChange={this.handleFirstNameChange}
-                    />
-                </div>
-
-                <div className="form-group">
-                    <label>Last name</label>
-                    <input 
-                        type="text" 
-                        className="form-control" 
-                        placeholder="Last name" 
-                        key="lastName"
-                        value={this.state.lastName}
-                        onChange={this.handleLastNameChange}
-                    />
-                </div>
 
                 <div className="form-group">
                     <label>Email address</label>

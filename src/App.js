@@ -1,24 +1,31 @@
 import React, { Component } from 'react';
 import LogInForm from './components/login/LogInForm';
 import SignUpForm from './components/signup/SignUpForm';
-import PriceCompare from './components/pricecompare/PriceCompare';
-
+import Catalogue from './components/catalogue/Catalogue';
+import NavBar from './components/navbar/NavBar';
+import Axios from 'axios';
 class App extends Component {
 	state = {
 		userLoggedIn: false,
 		isOnSignUpPage: false,
 		isOnLogInPage: true,
-		firstName: '',
-		lastName: '',
+		email: '',
+		role: '',
+		shoppingCart: []
 	}
 
 	componentDidMount() {
-		const firstName = localStorage.getItem('firstName');
-		const lastName = localStorage.getItem('lastName');
-		if (firstName && lastName) {
+		const email = localStorage.getItem('email');
+		let role;
+		if (email) {
+			if (email === 'test.admin@hotmail.com') {
+				role = 'admin';
+			} else {
+				role = 'customer'
+			}
 			this.setState({ 
-				firstName, 
-				lastName, 
+				role,
+				email, 
 				userLoggedIn: true, 
 				isOnLogInPage: false, 
 				isOnSignUpPage: false 
@@ -32,21 +39,26 @@ class App extends Component {
 		}
 	}
 
-	redirectToHome = (firstName, lastName) => {
+	redirectToHome = (email) => {
+		console.log("test email ", email);
+		let role;
+		if (email === 'test.admin@hotmail.com') {
+			role = 'admin';
+		} else {
+			role = 'customer'
+		}
 		this.setState({ 
-			firstName, 
-			lastName, 
+			role,
+			email, 
 			userLoggedIn: true, 
 			isOnLogInPage: false, 
 			isOnSignUpPage: false 
 		});
-		localStorage.setItem('firstName', firstName);
-		localStorage.setItem('lastName', lastName);
+		localStorage.setItem('email', email);
 	}
 
 	redirectToSignUpPage = () => {
-		localStorage.removeItem('firstName');
-		localStorage.removeItem('lastName');
+		localStorage.removeItem('email');
 		this.setState({ 
 			userLoggedIn: false, 
 			isOnLogInPage: false, 
@@ -55,33 +67,69 @@ class App extends Component {
 	}
 
 	redirectToLogInPage = () => {
-		localStorage.removeItem('firstName');
-		localStorage.removeItem('lastName');
+		localStorage.removeItem('email');
 		this.setState({ 
-			firstName: '',
-			lastName: '',
+			email: '',
 			userLoggedIn: false, 
 			isOnLogInPage: true, 
 			isOnSignUpPage: false, 
 		});
 	}
 
+	addProductToCart = (productName) => {
+		const { email, shoppingCart } = this.state;
+		console.log('test product name ', productName);
+		console.log('test shoppingCart ', shoppingCart)
+		if (shoppingCart.length === 0) {
+			console.log("test empty cart");
+			Axios.post('http://localhost:8080/cart', {
+				email,
+				productName,
+				quantity: 1
+			})
+			.then((response) => {
+				Axios.get(`http://localhost:8080/cart?email=${email}`)
+					.then((res) => {
+						console.log('test created a new cart ', res.data);
+						this.setState({ shoppingCart: res.data});
+					})
+			})
+			.catch((error) => console.log('Something went wrong. Please try again later: ', error));
+		} else {
+			Axios.put('http://localhost:8080/cart', {
+				email,
+				productName,
+				quantity: 1
+			})
+			.then((response) => {
+				Axios.get(`http://localhost:8080/cart?email=${email}`)
+					.then((res) => {
+						console.log('test add new item to cart ', res.data);
+						this.setState({ shoppingCart: res.data});
+					})
+			})
+			.catch((error) => console.log('Something went wrong. Please try again later: ', error));
+		}
+	}
+
 	render() {
 		const { 
 			userLoggedIn, 
-			firstName, 
-			lastName, 
+			email, 
 			isOnSignUpPage, 
-			isOnLogInPage 
+			isOnLogInPage,
+			role,
 		} = this.state;
 
 		return(
 			<div>
 				{userLoggedIn && 
-					<PriceCompare 
-						firstName={firstName}
-						lastName={lastName} 
+					<NavBar role={role} email={email} onLogOut={this.redirectToLogInPage}/>}
+				{userLoggedIn && 
+					<Catalogue 
+						role={role}
 						onLogOut={this.redirectToLogInPage}
+						addProductToCart={this.addProductToCart}
 						/>}
 				{isOnSignUpPage && 
 					<SignUpForm 
