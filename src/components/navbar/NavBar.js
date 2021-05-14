@@ -14,10 +14,10 @@ class NavBar extends Component {
 					<div className="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul className="navbar-nav mr-auto">
 						<li className="nav-item">
-							<a className="nav-link" href="#" onClick={() => {}}>Catalogue</a>
+							<a className="nav-link" href="#" onClick={this.props.onCatalogueClick}>Catalogue</a>
 						</li>
 						<li className="nav-item">
-							<a className="nav-link" href="#" onClick={() => {}}>Check out</a>
+							<a className="nav-link" href="#" onClick={this.props.onCheckoutClick}>Check out</a>
 						</li>
 						<li className="nav-item">
 							<a className="nav-link" href="#" onClick={this.props.onLogOut}>Log out</a>

@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./ProductTable.module.css";
 import Table from "react-bootstrap/Table"
 
-const ProductTable = ({ data, role, addProductToCart }) => {
+const ProductTable = ({ data, role, addProductToCart, addedProducts }) => {
     const tableColumns = (
       <thead>
         <tr>
@@ -14,7 +14,7 @@ const ProductTable = ({ data, role, addProductToCart }) => {
     );
 
     const addToCartAction = (productName) => (
-      <a href="#" onClick={() => addProductToCart(productName)}>Add to cart</a>
+        <a href="#" onClick={() => addProductToCart(productName)}>Add to cart</a>
     );
 
     const updateProductAction = () => (
@@ -23,14 +23,16 @@ const ProductTable = ({ data, role, addProductToCart }) => {
 
     const tableRows = (
       <tbody>
-        {data.map((item, index) => {
+        {!!data && data.map((item, index) => {
           return (
             <tr key={index}>
             <td>{item.name}</td>
             <td>${item.price}.00</td>
-            <td>
-              {role === 'customer' ? addToCartAction(item.name) : updateProductAction}
-            </td>
+            {addedProducts.includes(item.name)
+              ? <td><span>Added to cart</span> </td>
+              : <td>
+                  {role === 'customer' ? addToCartAction(item.name) : updateProductAction}
+                </td>}
           </tr>
           );
         })}

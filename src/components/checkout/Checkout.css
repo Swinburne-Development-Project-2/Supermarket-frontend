@@ -1,9 +1,9 @@
-.catalogue-title-page {
+.checkout-title-page {
     font-size: xx-large;
     text-align: center;
 }
 
-.toCheckOut {
+.goShopping {
     margin: 3%;
     display: flex;
     justify-content: center;
