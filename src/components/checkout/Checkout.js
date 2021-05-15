@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import CheckoutTable from './CheckoutTable';
-import CheckoutActions from './CheckoutActions';
+import CheckoutTable from './checkoutTable/CheckoutTable';
+import CheckoutActions from './checkoutActions/CheckoutActions';
 import './Checkout.css';
 import Payment from '../payment/Payment';
 import fakeCart from './cart.json';

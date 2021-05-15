@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import ProductTable from "../productTable/ProductTable";
+import ProductTable from "./productTable/ProductTable";
+import ProductUpdateTable from './productUpdateTable/ProductUpdateTable';
 import './Catalogue.css';
 import fakeData from './catalogue.json';
 import Axios from 'axios';
@@ -8,6 +9,8 @@ class Catalogue extends Component {
 	state = {
 		productAddedToCart: [],
 		catalogueData: '',
+		showUpdateView: false,
+		selectedProductIndex: '',
 	}
 
 	componentDidMount() {
@@ -31,23 +34,52 @@ class Catalogue extends Component {
 			.catch((error) => console.log('Something went wrong. Please try again later: ', error));
 	}
 
+	backToCatalogue = () => {
+		this.getCatalogueData();
+		this.setState({ showUpdateView: false, selectedProductIndex: '' });
+	}
+
+	showUpdateProductView = (selectedProductIndex) => {
+		this.setState({ showUpdateView: true, selectedProductIndex });
+	}
+
 	render() {
-		const { productAddedToCart, catalogueData } = this.state;
+		const { productAddedToCart, catalogueData, showUpdateView, selectedProductIndex } = this.state;
 		const { role } = this.props;
-		return(
-		    <div>
+
+		const catalogueView = (
+			<div>
 				<div class="pb-2 mt-4 mb-2 catalogue-title-page">
 					Catalogue
 				</div>
 				<ProductTable
 					addProductToCart={this.addToCart}
 					addedProducts={productAddedToCart}
+					showUpdateProductView={this.showUpdateProductView}
 					data={catalogueData.products}
 					role={role}
 				/>
 				<div className="toCheckOut">
                 	<button onClick={this.props.onCheckoutClick} type="submit" className="btn btn-primary">Check out</button>
             	</div>
+			</div>
+		);
+
+		const updateView = (
+			<div>
+				<div class="pb-2 mt-4 mb-2 catalogue-title-page">
+					Update product
+				</div>
+				<ProductUpdateTable
+					selectedProductIndex={selectedProductIndex}
+					backToCatalogue={this.backToCatalogue}
+				/>
+			</div>
+		);
+
+		return(
+		    <div>
+				{showUpdateView ? updateView : catalogueView}
 			</div>
 		);
 	}
