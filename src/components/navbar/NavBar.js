@@ -19,6 +19,10 @@ class NavBar extends Component {
 						<li className="nav-item">
 							<a className="nav-link" href="#" onClick={this.props.onCheckoutClick}>Check out</a>
 						</li>
+						{email === 'test.admin@hotmail.com' && 
+						<li className="nav-item">
+							<a className="nav-link" href="#" onClick={this.props.onSalesReportClick}>Sales Report</a>
+						</li>}
 						<li className="nav-item">
 							<a className="nav-link" href="#" onClick={this.props.onLogOut}>Log out</a>
 						</li>

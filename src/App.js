@@ -3,6 +3,7 @@ import LogInForm from './components/login/LogInForm';
 import SignUpForm from './components/signup/SignUpForm';
 import Catalogue from './components/catalogue/Catalogue';
 import Checkout from './components/checkout/Checkout';
+import SalesReport from './components/salesReport/SalesReport';
 import NavBar from './components/navbar/NavBar';
 import Axios from 'axios';
 class App extends Component {
@@ -12,6 +13,7 @@ class App extends Component {
 		isOnLogInPage: true,
 		isOnCataloguePage: false,
 		isOnCheckOutPage: false,
+		isOnSalesReportPage: false,
 		email: '',
 		role: '',
 		shoppingCart: [],
@@ -35,6 +37,7 @@ class App extends Component {
 				isOnSignUpPage: false,
 				isOnCataloguePage: page === 'catalogue',
 				isOnCheckOutPage: page === 'checkout',
+				isOnSalesReportPage: page === 'salesreport',
 			});
 		} else {
 			this.setState({
@@ -43,6 +46,7 @@ class App extends Component {
 				isOnLogInPage: true,
 				isOnSignUpPage: false,
 				isOnCheckOutPage: false,
+				isOnSalesReportPage: false,
 			});
 		}
 	}
@@ -63,6 +67,7 @@ class App extends Component {
 			isOnLogInPage: false,
 			isOnSignUpPage: false,
 			isOnCheckOutPage: false,
+			isOnSalesReportPage: false,
 		});
 		localStorage.setItem('email', email);
 		localStorage.setItem('page', 'catalogue');
@@ -76,6 +81,7 @@ class App extends Component {
 			isOnSignUpPage: true,
 			isOnCataloguePage: false,
 			isOnCheckOutPage: false,
+			isOnSalesReportPage: false,
 		});
 	}
 
@@ -88,6 +94,7 @@ class App extends Component {
 			isOnSignUpPage: false,
 			isOnCataloguePage: false,
 			isOnCheckOutPage: false,
+			isOnSalesReportPage: false,
 		});
 	}
 
@@ -99,6 +106,7 @@ class App extends Component {
 			isOnSignUpPage: false,
 			isOnCataloguePage: true,
 			isOnCheckOutPage: false,
+			isOnSalesReportPage: false,
 		});
 	}
 
@@ -110,6 +118,19 @@ class App extends Component {
 			isOnSignUpPage: false,
 			isOnCataloguePage: false,
 			isOnCheckOutPage: true,
+			isOnSalesReportPage: false,
+		});
+	}
+
+	redirectToSalesReportPage = () => {
+		localStorage.setItem('page', 'salesreport');
+		this.setState({
+			userLoggedIn: true,
+			isOnLogInPage: false,
+			isOnSignUpPage: false,
+			isOnCataloguePage: false,
+			isOnCheckOutPage: false,
+			isOnSalesReportPage: true,
 		});
 	}
 
@@ -159,11 +180,12 @@ class App extends Component {
 			isOnCataloguePage,
 			isOnCheckOutPage,
 			shoppingCart,
-			catalogueData,
+			isOnSalesReportPage,
 		} = this.state;
 
 		const showCatalogue = isOnCataloguePage && userLoggedIn;
 		const showCheckOut = isOnCheckOutPage && userLoggedIn;
+		const showSalesReport = isOnSalesReportPage && userLoggedIn;
 
 		return(
 			<div>
@@ -174,6 +196,7 @@ class App extends Component {
 						onLogOut={this.redirectToLogInPage}
 						onCatalogueClick={this.redirectToCataloguePage}
 						onCheckoutClick={this.redirectToCheckOutPage}
+						onSalesReportClick={this.redirectToSalesReportPage}
 					/>}
 				{showCatalogue &&
 					<Catalogue
@@ -187,6 +210,10 @@ class App extends Component {
 						shoppingCart={shoppingCart}
 						redirectToHome={this.redirectToHome}
 						email={email}
+					/>}
+				{showSalesReport &&
+					<SalesReport
+						
 					/>}
 				{isOnSignUpPage &&
 					<SignUpForm
