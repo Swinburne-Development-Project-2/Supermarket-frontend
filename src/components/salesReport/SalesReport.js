@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import styles from './SalesReport.module.css';
-import fakeReport from './report.json';
 import Receipt from './Receipt';
 
 class SalesReport extends Component {

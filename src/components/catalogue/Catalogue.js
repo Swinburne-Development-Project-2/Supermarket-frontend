@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ProductTable from "./productTable/ProductTable";
 import ProductUpdateTable from './productUpdateTable/ProductUpdateTable';
 import './Catalogue.css';
-import fakeData from './catalogue.json';
 import Axios from 'axios';
 
 class Catalogue extends Component {

@@ -29,7 +29,7 @@ class LogInForm extends Component {
             password,
         })
         .then((response) => this.props.redirectToHome(email))
-        .catch((error) => this.setState({ hasError: true, errorMessage: 'Something went wrong. Please try again later.' }));
+        .catch((error) => this.setState({ hasError: true, errorMessage: 'Incorrect email or password.' }));
     }
 
     render() {

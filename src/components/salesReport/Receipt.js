@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./Receipt.module.css";
-import Table from "react-bootstrap/Table"
 
 const Receipt = ({ data, index }) => {
     const row = (label, value) => (
